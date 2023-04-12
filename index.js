@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json({ extended: false }));
 
 app.get("/", (req, res) => {
-  res.status(200).json({ msg: "Lele Web Server" });
+  res.status(200).json({ message: "Connected to Lele Web Server" });
 });
 
 app.listen(PORT, () => {
