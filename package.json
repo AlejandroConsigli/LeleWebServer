@@ -7,7 +7,7 @@
     "tsc": "tsc",
     "start": "nodemon build/index",
     "dev": "ts-node-dev src/index.ts",
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf build && tsc",
     "add-build": "git add build"
   },
   "author": "Alejandro Consigli",
