@@ -6,7 +6,9 @@
   "scripts": {
     "tsc": "tsc",
     "start": "nodemon build/index",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts",
+    "build": "rm -rf dist && tsc",
+    "add-build": "git add build"
   },
   "author": "Alejandro Consigli",
   "license": "ISC",
@@ -28,6 +30,7 @@
     "typescript": "^5.0.4"
   },
   "pre-commit": [
-    "tsc"
+    "build",
+    "add-build"
   ]
 }
