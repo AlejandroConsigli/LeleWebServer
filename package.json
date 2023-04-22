@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "start": "nodemon build/index",
+    "start": "nodemon dist/index",
     "dev": "ts-node-dev src/index.ts",
-    "build": "rm -rf build && tsc",
-    "add-build": "git add build"
+    "build": "rm -rf dist && tsc",
+    "add-build": "git add dist"
   },
   "author": "Alejandro Consigli",
   "license": "ISC",
