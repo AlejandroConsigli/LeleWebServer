@@ -25,7 +25,7 @@ export const createGreetingController = async (
     let greeting = await Greeting.findOne({ name });
     if (greeting) {
       return res.status(409).json({
-        errors: [{ msg: "There is already a greeting with this name" }],
+        errors: [{ message: "There is already a greeting with this name" }],
       });
     }
 
@@ -56,7 +56,7 @@ export const updateGreetingController = async (
       _id,
     });
     if (!greeting) {
-      return res.status(404).json({ msg: "Greeting not found" });
+      return res.status(404).json({ message: "Greeting not found" });
     }
 
     greeting = await Greeting.findOneAndUpdate(
@@ -87,7 +87,7 @@ export const deleteGreetingController = async (
       _id,
     });
     if (!greeting) {
-      return res.status(404).json({ msg: "Greeting not found" });
+      return res.status(404).json({ message: "Greeting not found" });
     }
 
     await Greeting.findOneAndRemove({ _id });

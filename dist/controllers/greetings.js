@@ -35,7 +35,7 @@ const createGreetingController = (req, res) => __awaiter(void 0, void 0, void 0,
         let greeting = yield Greeting_1.default.findOne({ name });
         if (greeting) {
             return res.status(409).json({
-                errors: [{ msg: "There is already a greeting with this name" }],
+                errors: [{ message: "There is already a greeting with this name" }],
             });
         }
         greeting = new Greeting_1.default({
@@ -61,7 +61,7 @@ const updateGreetingController = (req, res) => __awaiter(void 0, void 0, void 0,
             _id,
         });
         if (!greeting) {
-            return res.status(404).json({ msg: "Greeting not found" });
+            return res.status(404).json({ message: "Greeting not found" });
         }
         greeting = yield Greeting_1.default.findOneAndUpdate({ _id }, { $set: { name, description } }, { new: true });
         res.status(200).json(greeting);
@@ -83,7 +83,7 @@ const deleteGreetingController = (req, res) => __awaiter(void 0, void 0, void 0,
             _id,
         });
         if (!greeting) {
-            return res.status(404).json({ msg: "Greeting not found" });
+            return res.status(404).json({ message: "Greeting not found" });
         }
         yield Greeting_1.default.findOneAndRemove({ _id });
         res.status(200).json(greeting);
