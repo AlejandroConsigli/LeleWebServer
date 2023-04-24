@@ -14,7 +14,7 @@ export const getGreetingsController = async (_req: Request, res: Response) => {
 export const createGreetingController = async (
   req: Request,
   res: Response
-): Promise<any> => {
+): Promise<Response> => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -35,16 +35,16 @@ export const createGreetingController = async (
     });
     await greeting.save();
 
-    res.status(200).json(greeting);
+    return res.status(200).json(greeting);
   } catch (err) {
-    res.status(500).send("Server error");
+    return res.status(500).send("Server error");
   }
 };
 
 export const updateGreetingController = async (
   req: Request,
   res: Response
-): Promise<any> => {
+): Promise<Response> => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -65,17 +65,18 @@ export const updateGreetingController = async (
       { new: true }
     );
 
-    res.status(200).json(greeting);
+    return res.status(200).json(greeting);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server Error");
+    return res.status(500).send("Server Error");
   }
 };
 
 export const deleteGreetingController = async (
   req: Request,
   res: Response
-): Promise<any> => {
+): Promise<Response> => {
+  
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -92,8 +93,8 @@ export const deleteGreetingController = async (
 
     await Greeting.findOneAndRemove({ _id });
 
-    res.status(200).json(greeting);
+    return res.status(200).json(greeting);
   } catch (err) {
-    res.status(500).send("Server Error");
+    return res.status(500).send("Server Error");
   }
 };

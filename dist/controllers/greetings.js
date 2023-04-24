@@ -43,10 +43,10 @@ const createGreetingController = (req, res) => __awaiter(void 0, void 0, void 0,
             description,
         });
         yield greeting.save();
-        res.status(200).json(greeting);
+        return res.status(200).json(greeting);
     }
     catch (err) {
-        res.status(500).send("Server error");
+        return res.status(500).send("Server error");
     }
 });
 exports.createGreetingController = createGreetingController;
@@ -64,11 +64,11 @@ const updateGreetingController = (req, res) => __awaiter(void 0, void 0, void 0,
             return res.status(404).json({ message: "Greeting not found" });
         }
         greeting = yield Greeting_1.default.findOneAndUpdate({ _id }, { $set: { name, description } }, { new: true });
-        res.status(200).json(greeting);
+        return res.status(200).json(greeting);
     }
     catch (err) {
         console.error(err);
-        res.status(500).send("Server Error");
+        return res.status(500).send("Server Error");
     }
 });
 exports.updateGreetingController = updateGreetingController;
@@ -86,10 +86,10 @@ const deleteGreetingController = (req, res) => __awaiter(void 0, void 0, void 0,
             return res.status(404).json({ message: "Greeting not found" });
         }
         yield Greeting_1.default.findOneAndRemove({ _id });
-        res.status(200).json(greeting);
+        return res.status(200).json(greeting);
     }
     catch (err) {
-        res.status(500).send("Server Error");
+        return res.status(500).send("Server Error");
     }
 });
 exports.deleteGreetingController = deleteGreetingController;
